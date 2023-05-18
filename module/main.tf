@@ -4,12 +4,12 @@ resource "aws_instance" "instance" {
   vpc_security_group_ids = [data.aws_security_group.allow-all.id]
 
   tags = {
-    Name = var.component_name
+    Name = local.name
   }
 }
 
 resource "null_resource" "provisioner" {
-
+  count      = var.provisioner ? 1 : 0
   depends_on = [aws_instance.instance, aws_route53_record.records]
   provisioner "remote-exec" {
 
@@ -32,7 +32,7 @@ resource "null_resource" "provisioner" {
 
 resource "aws_route53_record" "records" {
   zone_id = "Z09384792YHLH982HW2W9"
-  name    = "${var.component_name}-dev.devopsb62.online"
+  name    = "${var.component_name}-dev.rdevopsb72.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.instance.private_ip]
