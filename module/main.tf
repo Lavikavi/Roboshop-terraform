@@ -3,7 +3,9 @@ resource "aws_instance" "instance" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.allow-all.id]
   iam_instance_profile   = aws_iam_instance_profile.instance_profile.name
-  tags                   = var.app_type == "app" ? local.app_tags : local.db_tags
+  tags = {
+    Name = local.name
+  }
 }
 
 resource "null_resource" "provisioner" {
@@ -79,7 +81,7 @@ resource "aws_iam_role_policy" "ssm-ps-policy" {
           "ssm:GetParameter"
         ],
         "Resource" : [
-          "arn:aws:kms:us-east-1:597965282506:key/5678aa43-fa8a-405b-8571-1918b26d16bc"",
+          "arn:aws:kms:us-east-1:597965282506:key/5678aa43-fa8a-405b-8571-1918b26d16bc",
           "arn:aws:ssm:us-east-1:597965282506:parameter/${var.env}.${var.component_name}.*"
         ]
       }
