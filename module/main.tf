@@ -2,7 +2,7 @@ resource "aws_instance" "instance" {
   ami                    = data.aws_ami.centos.image_id
   instance_type          = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.allow-all.id]
-
+  iam_instance_profile   = aws_iam_instance_profile.instance_profile.name
   tags = {
     Name = local.name
   }
@@ -52,4 +52,38 @@ resource "aws_iam_role" "role" {
   tags = {
     tag-key = "${var.component_name}-${var.env}-role"
   }
+}
+
+resource "aws_iam_instance_profile" "instance_profile" {
+  name = "${var.component_name}-${var.env}-role"
+  role = aws_iam_role.role.name
+}
+
+resource "aws_iam_role_policy" "ssm-ps-policy" {
+  name = "${var.component_name}-${var.env}-ssm-ps-policy"
+  role = aws_iam_role.role.id
+
+
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Sid" : "VisualEditor0",
+        "Effect" : "Allow",
+        "Action" : [
+          "ssm:GetParameterHistory",
+          "ssm:GetParametersByPath",
+          "ssm:GetParameters",
+          "ssm:GetParameter"
+        ],
+        "Resource" : "arn:aws:ssm:us-east-1:597965282506:parameter/${var.env}.${var.component_name}.*"
+      },
+      {
+        "Sid" : "VisualEditor1",
+        "Effect" : "Allow",
+        "Action" : "ssm:DescribeParameters",
+        "Resource" : "*"
+      }
+    ]
+  })
 }
