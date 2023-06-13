@@ -3,6 +3,7 @@ module "vpc" {
 
   for_each   = var.vpc
   cidr_block = each.value["cidr_block"]
-  tags= local.tags
-  env= var.env
+  subnets = each.value["subnets"]
+  tags = local.tags
+  env = var.env
 }
