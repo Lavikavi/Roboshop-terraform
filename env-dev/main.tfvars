@@ -1,4 +1,8 @@
-env = "dev"
+env              = "dev"
+bastion_cidr     = ["172.31.3.24/32"]
+default_vpc_id   = "vpc-066600692241ff798"
+default_vpc_cidr = "172.31.0.0/16"
+default_vpc_rtid = "rtb-097e292f0019d741e"
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
@@ -29,13 +33,42 @@ vpc = {
 
 app = {
   frontend = {
-    name          = "frontend"
-    instance_type = "t3.small"
-    subnet_name   = "web"
+    name             = "frontend"
+    instance_type    = "t3.small"
+    subnet_name      = "web"
+    allow_app_cidr   = "public"
+    desired_capacity = 2
+    max_size         = 10
+    min_size         = 2
   }
   catalogue = {
-    name          = "catalogue"
-    instance_type = "t3.small"
-    subnet_name   = "app"
+    name             = "catalogue"
+    instance_type    = "t3.small"
+    subnet_name      = "app"
+    allow_app_cidr   = "web"
+    desired_capacity = 2
+    max_size         = 10
+    min_size         = 2
   }
+  //  cart = {
+  //    name          = "cart"
+  //    instance_type = "t3.small"
+  //    subnet_name   = "app"
+  //  }
+  //  user = {
+  //    name          = "user"
+  //    instance_type = "t3.small"
+  //    subnet_name   = "app"
+  //  }
+  //  shipping = {
+  //    name          = "shipping"
+  //    instance_type = "t3.small"
+  //    subnet_name   = "app"
+  //  }
+  //  payment = {
+  //    name          = "payment"
+  //    instance_type = "t3.small"
+  //    subnet_name   = "app"
+  //  }
 }
+
