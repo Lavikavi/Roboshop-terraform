@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "git::https://github.com/Lavikavi/tf-module-vpc.git"
+  source = "git::https://github.com/raghudevopsb72/tf-module-vpc.git"
 
   for_each   = var.vpc
   cidr_block = each.value["cidr_block"]
@@ -14,7 +14,7 @@ module "vpc" {
 
 
 module "app" {
-  source = "git::https://github.com/Lavikavi/tf-module-app.git"
+  source = "git::https://github.com/raghudevopsb72/tf-module-app.git"
 
   for_each         = var.app
   instance_type    = each.value["instance_type"]
