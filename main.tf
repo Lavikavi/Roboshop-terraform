@@ -14,7 +14,7 @@ module "vpc" {
 
 
 //module "app" {
-//  source = "git::git::https://github.com/Lavikavi/tf-module-app1.git"
+//  source = "git::https://github.com/raghudevopsb72/tf-module-app.git"
 //
 //  for_each         = var.app
 //  instance_type    = each.value["instance_type"]
