@@ -1,8 +1,8 @@
 env              = "dev"
-bastion_cidr     = ["172.31.11.111/32"]
-default_vpc_id   = "vpc-0a8e3e6a0d6cb90d9"
+bastion_cidr     = ["172.31.3.24/32"]
+default_vpc_id   = "vpc-066600692241ff798"
 default_vpc_cidr = "172.31.0.0/16"
-default_vpc_rtid = "rtb-0b9a867762d6530ba"
+default_vpc_rtid = "rtb-097e292f0019d741e"
 kms_arn          = "arn:aws:kms:us-east-1:594770474021:key/b5bf560a-8bf1-4778-b9b4-bcaf1686715a"
 
 vpc = {
