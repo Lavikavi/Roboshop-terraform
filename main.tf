@@ -46,7 +46,7 @@ module "alb" {
 
 module "app" {
   depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.rabbitmq, module.alb]
-  source     = "git::https://github.com/raghudevopsb72/tf-module-app.git"
+  source     = "git::https://github.com/Lavikavi/tf-module-app1.git"
 
   for_each         = var.app
   instance_type    = each.value["instance_type"]
