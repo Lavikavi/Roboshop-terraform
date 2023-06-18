@@ -49,18 +49,20 @@ app = {
     listener_priority = 1
     lb_type           = "public"
     dns_name          = "dev"
+    parameters        = []
   }
   catalogue = {
     name              = "catalogue"
     instance_type     = "t3.small"
     subnet_name       = "app"
-    allow_app_cidr    = "web"
+    allow_app_cidr    = "app"
     desired_capacity  = 1
     max_size          = 10
     min_size          = 1
     app_port          = 8080
     listener_priority = 1
     lb_type           = "private"
+    parameters        = ["docdb"]
   }
   //  cart = {
   //    name          = "cart"
