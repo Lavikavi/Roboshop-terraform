@@ -1,12 +1,12 @@
 env              = "dev"
-bastion_cidr     = ["172.31.3.24/32"]
+bastion_cidr     = ["172.31.95.67/32"]
 monitor_cidr     = ["172.31.86.160/32"]
-default_vpc_id   = "vpc-066600692241ff798"
+default_vpc_id   = "vpc-05c1b9ed545b658f0"
 default_vpc_cidr = "172.31.0.0/16"
-default_vpc_rtid = "rtb-097e292f0019d741e"
-kms_arn          = "arn:aws:kms:us-east-1:594770474021:key/b5bf560a-8bf1-4778-b9b4-bcaf1686715a"
+default_vpc_rtid = "rtb-094b55280e8586ff0"
+kms_arn          = "arn:aws:kms:us-east-1:945025672610:key/b70d077e-755a-421f-a6ae-afbf0392276d"
 domain_name      = "devopsb62.online"
-domain_id        = "Z02675522FSYLKMVI87TD"
+domain_id        = "Z07214133LNPFDPBTBRBS"
 
 
 vpc = {
