@@ -26,7 +26,7 @@ resource "null_resource" "provisioner" {
 
 
 resource "aws_route53_record" "records" {
-  zone_id = "Z02675522FSYLKMVI87TD"
+  zone_id = "Z07214133LNPFDPBTBRBS"
   name    = "${var.component_name}-dev.devopsb62.online"
   type    = "A"
   ttl     = 30
@@ -79,8 +79,8 @@ resource "aws_iam_role_policy" "ssm-ps-policy" {
           "ssm:GetParameter"
         ],
         "Resource" : [
-          "arn:aws:kms:us-east-1:594770474021:key/b5bf560a-8bf1-4778-b9b4-bcaf1686715a",
-          "arn:aws:ssm:us-east-1:594770474021:parameter/${var.env}.${var.component_name}.*"
+          "arn:aws:kms:us-east-1:945025672610:key/",
+          "arn:aws:ssm:us-east-1:945025672610:parameter/${var.env}.${var.component_name}.*"
         ]
       }
     ]
